@@ -1,0 +1,23 @@
+{
+  "name": "easy-jq-plugin",
+  "homepage": "https://github.com/beherca/easy-jq-plugin",
+  "authors": [
+    "beherca@gmail.com"
+  ],
+  "description": "A simple library to easy the process of making jquery plugin",
+  "main": "easy-jq-plugin.js",
+  "moduleType": [],
+  "keywords": [
+    "jquery",
+    "plugin",
+    "easyJqPlugin"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
