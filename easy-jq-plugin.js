@@ -1,5 +1,5 @@
 /* ========================================================================
- * Easy Jquery Plugin
+ * Easy jQuery Plugin
  * 
  * 1 $().yourPluginName(): When no parameter is passed in, your plugin is initialized with default configuration
  * 2 $().yourPluginName(obj): When object parameter is passed in, object will be as new configuration to override your default configuration
