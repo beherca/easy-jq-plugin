@@ -9,4 +9,5 @@ With this plugin, you can create your own jquery plugin
 4. $().your-plugin-name(str, [arguments]): Pass string as method name in to call internal method with the name, and array is the configuration arguments
 
 # Usage
-Example can be found [here(TODO)](#)
+Example can be found [here](http://beherca.github.io/easy-jq-plugin/example/)
+
