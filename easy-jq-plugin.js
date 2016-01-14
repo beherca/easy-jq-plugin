@@ -11,7 +11,7 @@
  */
  ;(function($, window, document, undefined) {
      
-    window.easyJqPlugin = function(cls, instPrefix){
+    var EasyJqPlugin = function(cls, instPrefix){
         if(typeof cls != 'function'){
             throw new Exception('Class must be a function');
         }
@@ -70,4 +70,17 @@
         }
         return Wrapper;
     }
+
+    /* Helper function to register the new plugins*/
+    EasyJqPlugin.reg = function(plugin, instancePrefix, events, version){
+        if(plugin && instancePrefix){
+            plugin = EasyJqPlugin(plugin, instancePrefix);
+            events && (plugin.EVENTS = events);
+            version && (plugin.version = version);
+            $.fn[instancePrefix] = plugin;
+        }
+        
+    }
+
+    window.easyJqPlugin = EasyJqPlugin;
  })(jQuery, window, document);

@@ -141,9 +141,8 @@
 
     EasyButton.prototype = _.extend(EasyButton.prototype, prototypes);
 
-    var plugin = easyJqPlugin(EasyButton, INSTANCE_PREFIX);
-    plugin.EVENTS = EVENTS;
-    plugin.version = '0.0.1';
-    $.fn[INSTANCE_PREFIX] = plugin; 
+    var version = '0.0.2';
+
+    easyJqPlugin.reg(EasyButton, INSTANCE_PREFIX, EVENTS, version);
 
 })(jQuery, window, document);
