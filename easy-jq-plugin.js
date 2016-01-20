@@ -51,7 +51,10 @@
                         if(!instance){
                             instance = new cls(this, option);
                         }
-                        return instance[fnName].apply(instance, args.slice(1, argLength));
+                        if(instance[fnName])
+                            return instance[fnName].apply(instance, args.slice(1, argLength));
+                        else
+                            throw new Error('Method Not found');
                     }else{
                         return this.each(function () {
                             var $me = $(this),
