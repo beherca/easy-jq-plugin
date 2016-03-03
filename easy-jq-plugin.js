@@ -9,7 +9,7 @@
  * Authors : beherca@gmail.com
  * ======================================================================== 
  */
- ;(function($, window, document, undefined) {
+ ;(function($, window, document, module, undefined) {
      
     var EasyJqPlugin = function(cls, instPrefix){
         if(typeof cls != 'function'){
@@ -85,5 +85,8 @@
         
     }
 
+    module && module.exports && module.exports = EasyJqPlugin;
     window.easyJqPlugin = EasyJqPlugin;
- })(jQuery, window, document);
+ })
+//pass jquery , window, document in to ensure they are not being overrided, module is for commonjs loader like webpack
+(jQuery, window, document, module);
