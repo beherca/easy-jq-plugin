@@ -85,7 +85,7 @@
         
     }
 
-    module && module.exports && module.exports = EasyJqPlugin;
+    module && module.exports && (module.exports = EasyJqPlugin);
     window.easyJqPlugin = EasyJqPlugin;
  })
 //pass jquery , window, document in to ensure they are not being overrided, module is for commonjs loader like webpack
