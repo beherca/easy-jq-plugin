@@ -93,7 +93,7 @@
         @params metadata Class's metadata contain version, jq_data_prefix, plugin name
             {
                 version : '0.0.1',
-                pluginName : 'loginform',
+                name : 'loginform',
                 events : {}
             }
         @params extendedPrototypes
@@ -120,8 +120,8 @@
         if(!clazz || !metadata || !extendedPrototypes){
             throw new Error('Clazz or metadata, or extendedPrototypes is null');
         }
-        _.extend(clazz, metadata, extendedPrototypes);
-        EasyJqPlugin.reg(clazz, clazz.pluginName, clazz.events, clazz.version);
+        _.mixin(clazz, extendedPrototypes);
+        EasyJqPlugin.reg(clazz, metadata.name, metadata.events, metadata.version);
     }
 
     module && module.exports && (module.exports = EasyJqPlugin);
