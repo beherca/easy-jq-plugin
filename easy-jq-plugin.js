@@ -75,14 +75,53 @@
     }
 
     /* Helper function to register the new plugins*/
-    EasyJqPlugin.reg = function(plugin, instancePrefix, events, version){
-        if(plugin && instancePrefix){
-            plugin = EasyJqPlugin(plugin, instancePrefix);
+    EasyJqPlugin.reg = function(pluginClazz, 
+        pluginName, /* would be used as  plugin name too */
+        events, 
+        version){
+        if(pluginClazz && pluginName){
+            var plugin = EasyJqPlugin(pluginClazz, pluginName);
             events && (plugin.EVENTS = events);
             version && (plugin.version = version);
-            $.fn[instancePrefix] = plugin;
+            $.fn[pluginName] = plugin;
         }
         
+    }
+
+    /**
+        @params clazz Class of plugin
+        @params metadata Class's metadata contain version, jq_data_prefix, plugin name
+            {
+                version : '0.0.1',
+                name : 'loginform',
+                events : {}
+            }
+        @params extendedPrototypes
+        @usage 
+            var ejp = require('easy-jq-plugin');
+            ejp.pluginize(Editor, metadata, prototypes);
+
+        @desc
+            ejp.pluginize(LoginForm, metadata, prototypes) is a short-hand call equal to below code
+
+            _.extend(Editor, {
+                version : '0.0.1',
+                DATA_PREFIX : 'data-',
+                UNDERSCORE_VAR : {variable : 'option'},
+                INSTANCE_PREFIX : 'loginform',
+                EVENTS : {}
+            });
+             _.extend(LoginForm.prototype, prototypes);
+
+            //register to jquery
+            ejp.reg(Editor, Editor.INSTANCE_PREFIX, Editor.EVENTS, Editor.version);
+    */
+    EasyJqPlugin.pluginize = function(clazz, metadata, extendedPrototypes){
+        if(!clazz || !metadata || !extendedPrototypes){
+            throw new Error('Clazz or metadata, or extendedPrototypes is null');
+        }
+        _.extend(clazz, metadata, extendedPrototypes);
+        EasyJqPlugin.reg(clazz, clazz.name, clazz.events, clazz.version);
     }
 
     module && module.exports && (module.exports = EasyJqPlugin);
