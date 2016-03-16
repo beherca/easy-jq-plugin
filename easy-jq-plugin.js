@@ -120,7 +120,7 @@
         if(!clazz || !metadata || !extendedPrototypes){
             throw new Error('Clazz or metadata, or extendedPrototypes is null');
         }
-        _.mixin(clazz, extendedPrototypes);
+        _.extend(clazz.prototype, extendedPrototypes);
         EasyJqPlugin.reg(clazz, metadata.name, metadata.events, metadata.version);
     }
 
