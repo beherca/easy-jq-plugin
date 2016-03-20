@@ -120,6 +120,9 @@
         if(!clazz || !metadata || !extendedPrototypes){
             throw new Error('Clazz or metadata, or extendedPrototypes is null');
         }
+        // add meta data to class constructor
+        _.extend(clazz, metadata);
+        // create prototype chain
         _.extend(clazz.prototype, extendedPrototypes);
         EasyJqPlugin.reg(clazz, metadata.name, metadata.events, metadata.version);
     }
