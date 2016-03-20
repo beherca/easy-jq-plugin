@@ -84,8 +84,8 @@
             events && (plugin.EVENTS = events);
             version && (plugin.version = version);
             $.fn[pluginName] = plugin;
+            return plugin;
         }
-        
     }
 
     /**
@@ -122,7 +122,7 @@
         }
         // create prototype chain
         _.extend(clazz.prototype, extendedPrototypes);
-        EasyJqPlugin.reg(clazz, metadata.name, metadata.events, metadata.version);
+        return EasyJqPlugin.reg(clazz, metadata.name, metadata.events, metadata.version);
     }
 
     module && module.exports && (module.exports = EasyJqPlugin);
