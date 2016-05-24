@@ -58,7 +58,7 @@
                     }else{
                         return this.each(function () {
                             var $me = $(this),
-                            var instance = $me.data(instanceName);
+                            instance = $me.data(instanceName);
                             if(!instance){
                                 instance = new cls(this, option);
                             }
