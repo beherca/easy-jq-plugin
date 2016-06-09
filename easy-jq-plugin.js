@@ -49,7 +49,7 @@
                     if($me.length  == 1){
                         var instance = $me.data(instanceName);
                         if(!instance){
-                            instance = new cls(this, option);
+                            $me.data(instanceName, (instance = new cls(this, option)));
                         }
                         if(instance[fnName])
                             return instance[fnName].apply(instance, args.slice(1, argLength));
@@ -60,7 +60,7 @@
                             var $me = $(this),
                             instance = $me.data(instanceName);
                             if(!instance){
-                                instance = new cls(this, option);
+                                $me.data(instanceName, (instance = new cls(this, option)));
                             }
                             if(instance[fnName])
                                 return instance[fnName].apply(instance, args.slice(1, argLength));
